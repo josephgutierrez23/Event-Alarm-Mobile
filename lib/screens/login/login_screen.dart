@@ -10,8 +10,15 @@ import '../../widgets/atoms/gesture_pill.dart';
 import '../../widgets/molecules/app_text_field.dart';
 import '../../widgets/molecules/primary_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _obscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +49,15 @@ class LoginScreen extends StatelessWidget {
                 hint: 'nombre@universidad.edu.co',
               ),
             ),
-            const Positioned(
+            Positioned(
               left: 16,
               top: 242,
               child: AppTextField(
                 label: 'Contraseña',
                 hint: 'Mínimo 8 caracteres',
+                obscureText: _obscure,
+                showEye: true,
+                onEyeTap: () => setState(() => _obscure = !_obscure),
               ),
             ),
             Positioned(
