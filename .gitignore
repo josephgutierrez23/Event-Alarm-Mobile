@@ -1,0 +1,120 @@
+# =============================================================================
+# Event-Alarm-Mobile — qué SÍ y qué NO se versiona
+# =============================================================================
+#
+# SÍ (no están listados abajo; se suben a Git):
+#   Código ........ lib/, test/ (incluye test/goldens/*.png)
+#   Recursos ...... assets/icons/, assets/fonts/
+#   Proyecto ...... pubspec.yaml, pubspec.lock, analysis_options.yaml,
+#                   README.md, .metadata, .gitignore
+#   Nativo ........ android/ y ios/ (fuentes, Gradle, Xcode, manifiestos)
+#   Tests ......... test/*.dart y las imágenes golden de referencia
+#
+# NO (reglas de abajo). Si un archivo generado se necesita en el repo,
+# úsalo con !ruta para exceptuarlo.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# SO y editores — NO
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+.history
+.atom/
+.svn/
+.swiftpm/
+
+# IntelliJ / Android Studio (preferencias locales)
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code: launch.json / tasks.json SÍ se pueden compartir.
+# Descomenta la línea siguiente solo si quieres ignorar toda la carpeta.
+# .vscode/
+
+# -----------------------------------------------------------------------------
+# Flutter / Dart — NO (se regeneran con flutter pub get / flutter build)
+# -----------------------------------------------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+migrate_working_dir/
+
+# Salida de compilación y cobertura
+/build/
+/coverage/
+*.class
+*.pyc
+*.log
+
+# Mapas de ofuscación y símbolos (no son el código fuente)
+app.*.symbols
+app.*.map.json
+
+# Fallos de golden tests (copias locales al fallar; los de referencia SÍ van)
+**/failures/
+
+# -----------------------------------------------------------------------------
+# Android — NO (artefactos locales; el código en android/ SÍ se versiona)
+# -----------------------------------------------------------------------------
+/android/.gradle/
+/android/.kotlin/
+/android/captures/
+/android/local.properties
+/android/app/debug
+/android/app/profile
+/android/app/release
+**/.cxx/
+
+# APK / AAB sueltos (el build oficial vive en /build/)
+*.apk
+*.aab
+*.apks
+
+# -----------------------------------------------------------------------------
+# iOS — NO (Pods y derivados; el código en ios/ SÍ se versiona)
+# Ver también ios/.gitignore
+# -----------------------------------------------------------------------------
+**/Pods/
+**/DerivedData/
+**/xcuserdata/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# -----------------------------------------------------------------------------
+# Secretos y credenciales — NUNCA
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.mobileprovision
+key.properties
+**/*.keystore
+**/*.jks
+google-services.json
+GoogleService-Info.plist
+
+# -----------------------------------------------------------------------------
+# Capturas locales del emulador — NO
+# Las goldens de CI viven en test/goldens/ y SÍ se versionan.
+# -----------------------------------------------------------------------------
+/emulator_shots/
+/tooling/pixel_audit/*.png
